@@ -27,6 +27,3 @@ Le formulaire doit contenir :
 - prénom & nom + email + pays (liste)
 - message + genre (H/F) + 3 sujets possibles ((Réparation, Commande, Autres)
 - Tous les champs sont obligatoires, sauf le sujet (dans ce cas, valeur = "Autre")
-## Demo
-
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/XuA6TJBp9EP9ntJjVe" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/ThisIsMashed-animation-animated-mashed-XuA6TJBp9EP9ntJjVe"></a></p>
