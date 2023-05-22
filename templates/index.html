@@ -7,9 +7,11 @@
     <title>Flask</title>
 </head>
 <body>
+    <!-- Titre du formulire et implémentation de la fonction créé sur main.py -->
     <h1>Bienvenue sur mon formulaire</h1>
-    <form action="{{ url_for('form_valide') }}" method="POST">
 
+    <!-- ici j'en "amené ma variable de main.py" permet de faire le lien entre html et python -->
+    <form action="{{ url_for('form_valide') }}" method="POST"> 
         <p>
             <!--Nom et prénom -->
             <label for="nom">Nom : </label>
@@ -25,7 +27,7 @@
             <input type="text" name="email" id="email">
         </p>
         <p>
-            <!-- Choix des pays maitrisé-->
+            <!-- Choix des pays -->
             <label for="pays">Pays</label>
             <select name="pays" id="pays">
                 <option value="">-- Sélectionnez un pays --</option>
@@ -37,7 +39,7 @@
             </select>
         </p>
         <p>
-            <!-- Zone de texte-->
+            <!-- Zone de texte -->
             <label for="message">Votre message :</label><br />
             <textarea name="message" id="message" rows="4" cols="30" ></textarea>
         </p>
@@ -51,6 +53,7 @@
             <label for="choix2">Femme</label>  
         </p>
         <p>
+            <!-- Sujet en case a cocher "pas obligatoire" -->
             <label>Sujets:</label>
             <input type="checkbox" name="sujets" value="Réparation">
             <label for="Réparation">Réparation</label>
@@ -65,7 +68,7 @@
             <input type="text" id="honeypot" name="honeypot">
         </div>
         <p>
-            <!--Bouton envoyé-->
+            <!-- Bouton envoyé -->
             <input type="submit" value="Envoyer">
         </p>
     </form>
