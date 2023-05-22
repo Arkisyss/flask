@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for
 import re
+import bleach 
 
 # création de l'application
 app = Flask(__name__)
@@ -8,7 +9,7 @@ app = Flask(__name__)
 @app.route('/') 
 def home():
     return render_template('index.html')
-
+    
 # page de validation
 @app.route('/retour', methods=['POST']) 
 
@@ -19,26 +20,37 @@ def form_valide():
         pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
         return re.match(pattern, email)
     
-    nom = request.form.get('nom')
-    prenom = request.form.get('prenom')
-    email = request.form.get('email')
-    pays = request.form.get('pays')
-    genre = request.form.get('genre')
-    message = request.form.get('message')
-    sujets = request.form.get('sujets')
-
+    # attribution des fonctions
+    # empecher les scripts
+    nom = bleach.clean(request.form.get('nom'))
+    prenom = bleach.clean(request.form.get('prenom'))
+    email = bleach.clean(request.form.get('email'))
+    pays = bleach.clean(request.form.get('pays'))
+    genre = bleach.clean(request.form.get('genre'))
+    message = bleach.clean(request.form.get('message'))
+    sujets = request.form.getlist('sujets')  # Utilisez getlist() pour récupérer une liste de valeurs
+    honeypot = request.form.get('honeypot')  # Champ honeypot
+    
+    
     # Vérification des caractères dans "nom" et "prenom"
     if not re.match(r'^[A-Za-zÀ-ÿ\s-]+$', nom) or not re.match(r'^[A-Za-zÀ-ÿ\s-]+$', prenom):
         return "Le nom et le prénom doivent contenir uniquement des lettres ou être rempli."
 
     # Vérification de l'adresse email
     if not email_valide(email):
-        return "Veuillez indiquer une adresse mail"
+        return "Veuillez indiquer une adresse mail valide"
 
     # Vérification des champs obligatoires (nom, prenom, email, pays, genre, message)
     if not nom or not prenom or not email or not pays or not genre or not message:
         return "Veuillez remplir tous les champs du formulaire."
-
+    
+    if not sujets:
+        sujets = ["Autre"]
+    
+    # Vérification honeypot antispam
+    if honeypot:
+        return "Êtes-vous un robot ?"
+    
     return render_template('retour.html', prenom = prenom, nom = nom, email = email, pays = pays, genre = genre, message = message, sujets = sujets )
 
 # Lancement de l'app via le terminal

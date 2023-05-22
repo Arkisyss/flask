@@ -10,13 +10,13 @@
     <h1>Merci de nous avoir contacté</h1>
     <h1>Nous vous contacterons dans les plus bref delais</h1>
     <h2>Voici vos infos</h2>
-    <p>{{ nom }}</p>
-    <p>{{ prenom }}</p>
-    <p>{{ email }}</p>
-    <p>{{ pays }}</p>
-    <p>{{ message }}</p>
-    <p>{{ genre }}</p>
-    <p>{{ sujets }}</p>
+    <p>Nom : {{ nom }}</p>
+    <p>Prénom : {{ prenom }}</p>
+    <p>Email : {{ email }}</p>
+    <p>Pays : {{ pays }}</p>
+    <p>Message : {{ message }}</p>
+    <p>Genre : {{ genre }}</p>
+    <p>Sujet : {% for sujet in sujets %}{{ sujet }}{% endfor %}</p>
 </body>
 
 </html>

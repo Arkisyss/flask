@@ -22,17 +22,18 @@
         <p>
             <!-- Email -->
             <label for="email">Email : </label>
-            <input type="text" name="email" id="email" >
+            <input type="text" name="email" id="email">
         </p>
         <p>
             <!-- Choix des pays maitrisé-->
             <label for="pays">Pays</label>
             <select name="pays" id="pays">
-                <option value="français">Français</option>
-                <option value="anglais">Englais</option>
-                <option value="néerlandais">Néerlandais</option>
-                <option value="russe">Russe</option>
-                <option value="chinois">Chinois</option>
+                <option value="">-- Sélectionnez un pays --</option>
+                <option value="français">France</option>
+                <option value="anglais">Engleterre</option>
+                <option value="néerlandais">Belgique</option>
+                <option value="russe">Russie</option>
+                <option value="chinois">Chine</option>
             </select>
         </p>
         <p>
@@ -44,19 +45,25 @@
             <!-- Choix de genre -->
             <!-- Mettre le même attribut a "name" permet de forcer un seul choix.-->
             Quel est votre genre ?
-            <input type="radio" name="genre" value="Homme" id="choix1" >
+            <input type="radio" name="genre" value="Homme" id="choix1">
             <label for="choix1">Homme</label>
-            <input type="radio" name="genre" value="Femme" id="choix2" >
+            <input type="radio" name="genre" value="Femme" id="choix2">
             <label for="choix2">Femme</label>  
         </p>
         <p>
-            <input type="radio" name="sujets" value="Réparation" id="choix1" >
-            <label for="choix1">réparation</label>
-            <input type="radio" name="sujets" value="Commande" id="choix2" >
-            <label for="choix2">Commande</label>
-            <input type="radio" name="sujets" value="Autres" id="choix2" >
-            <label for="choix2">Autres</label>
+            <label>Sujets:</label>
+            <input type="checkbox" name="sujets" value="Réparation">
+            <label for="Réparation">Réparation</label>
+            <input type="checkbox" name="sujets" value="Commande">
+            <label for="Commande">Commande</label>
+            <input type="checkbox" name="sujets" value="Autres">
+            <label for="Autres">Autres</label>
         </p>
+        <!-- Champ de formulaire honeypot (invisible pour les utilisateurs) -->
+        <div style="display:none;">
+            <label for="honeypot">Ne pas remplir ce champ :</label>
+            <input type="text" id="honeypot" name="honeypot">
+        </div>
         <p>
             <!--Bouton envoyé-->
             <input type="submit" value="Envoyer">
